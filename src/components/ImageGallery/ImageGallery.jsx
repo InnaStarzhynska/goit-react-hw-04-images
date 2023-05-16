@@ -9,14 +9,14 @@ export function ImageGallery({images}) {
     const [title, setTitle] = useState('');
     const [isOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
-        return removeEvtListener();
-    }, [])
-
-    const removeEvtListener = () => {
+  const removeEvtListener = () => {
         window.removeEventListener('keydown', handleKeyDown);
     }
+
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+        return removeEvtListener;
+    }, [])
 
     const handleKeyDown = (evt) => {
         if (evt.code === 'Escape') {
