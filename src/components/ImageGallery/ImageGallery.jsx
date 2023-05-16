@@ -9,16 +9,15 @@ export function ImageGallery({images}) {
     const [title, setTitle] = useState('');
     const [isOpen, setIsOpen] = useState(false);
 
-  const removeEvtListener = () => {
-        window.removeEventListener('keydown', handleKeyDown);
-    }
-
     useEffect(() => {
         window.addEventListener('keydown', handleKeyDown);
-        return removeEvtListener;
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        }
     }, [])
 
     const handleKeyDown = (evt) => {
+
         if (evt.code === 'Escape') {
             setIsOpen(false)
         }
